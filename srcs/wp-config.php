@@ -23,15 +23,19 @@
 define('DB_NAME', 'wordpress');
 
 /** MySQL database username */
-define('DB_USER', 'wordpressuser');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'user_password_here');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
+/** Database Charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
 
+/** The Database Collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
 
 
 /**#@+
