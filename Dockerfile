@@ -30,14 +30,13 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/4.9.5/phpMyAdmin-4.9.5-all-lang
 RUN tar xf phpMyAdmin-4.9.5-all-languages.tar.gz && mv phpMyAdmin-4.9.5-all-languages/* /var/www/html/wordpress/phpmyadmin
 COPY srcs/config.inc.php /var/www/html/wordpress/phpmyadmin/
 RUN mkdir /var/www/html/wordpress/phpmyadmin/tmp
+RUN chown -R www-data:www-data /var/www/*
+COPY srcs/pma_tables_set_up.sh /
+RUN bash pma_tables_set_up.sh
 
 ##WORDPRESS DATABASE SET UP##
-RUN service mysql start
-COPY srcs/my.cnf /etc/mysql/my.cnf
 COPY srcs/db_set_up.sh /
 RUN bash db_set_up.sh
-
-RUN chown -R www-data:www-data /var/www/*
 
 ##SSL KEY GENERATION##
 RUN mkdir /etc/nginx/certs
@@ -47,4 +46,4 @@ RUN mv *.pem /etc/nginx/certs/
 #RUN nginx -t
 
 EXPOSE 80 443
-ENTRYPOINT service mysql restart && service php7.3-fpm start && nginx -g 'daemon off;' 
+ENTRYPOINT service mysql start && service php7.3-fpm start && nginx -g 'daemon off;' 
