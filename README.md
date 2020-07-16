@@ -3,7 +3,7 @@
 In order to start Docker properly you may want to run:
    ```bash srcs/init_docker.sh```.
 
-In order to construct the image use the following command at the root of the repository:
+In order to build the image use the following command at the root of the repository:
     ```docker build -t ft_server_image .``` 
 The whole building may take several minutes.
 
