@@ -10,8 +10,10 @@ server{
 	listen [::]:443 ssl ;
 
 	ssl on;
-    ssl_certificate certs/cert.pem;
-    ssl_certificate_key certs/key.pem;
+	ssl_certificate certs/cert.pem;
+   	ssl_certificate_key certs/key.pem;
+	ssl_protocols	SSLv3 TLSv1;
+	ssl_ciphers	HIGH:!aNULL:!MD5;
 
 	server_name localhost;
 	root /var/www/html/wordpress;
