@@ -31,8 +31,7 @@ RUN tar xf phpMyAdmin-4.9.5-all-languages.tar.gz && mv phpMyAdmin-4.9.5-all-lang
 COPY srcs/config.inc.php /var/www/html/wordpress/phpmyadmin/
 RUN mkdir /var/www/html/wordpress/phpmyadmin/tmp
 RUN chown -R www-data:www-data /var/www/*
-COPY srcs/pma_tables_set_up.sh /
-RUN bash pma_tables_set_up.sh
+RUN service mysql start ; cat /var/www/html/wordpress/phpmyadmin/sql/create_tables.sql | mysql -u root
 
 ##WORDPRESS DATABASE SET UP##
 COPY srcs/db_set_up.sh /
