@@ -14,7 +14,7 @@ Via https://localhost/ you can access Wordpress.
 
 Via https://localhost/phpmyadmin you can access phpmyadmin (login : root, no password).
 
-You can gEt into the running container by using the following command: 
+You can get into the running container by using the following command: 
     ```docker exec -it ft_server_running bash```.
 Nano is installed.
 
